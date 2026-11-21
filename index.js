@@ -40,13 +40,13 @@ function renderTickets() {
         const category = document.createElement('span')
         category.textContent = tickets.category
 
-        const done = document.createElement('span')
-        if (done === true) {
+        if (tickets.done === true) {
             tickets.done = 'Выполнена'
         }
-        else if (done === false) {
+        else if (tickets.done === false) {
             tickets.done = 'Открыта'
         }
+        const done = document.createElement('span')
         done.textContent = tickets.done
 
         TicketsList.append(item)
