@@ -10,3 +10,32 @@ const TitleName = document.getElementById('TitleName')
 const RoomNumber = document.getElementById('RoomNumber')
 const CategoryName = document.getElementById('CategoryName')
 const ButtonPushHelp = document.querySelector('#ButtonPushHelp')
+
+function renderTickets() {
+    TicketsList.innerHTML = ' '
+
+    TicketsList.forEach((tickets) => {
+        const iten = document.createElement('li')
+        const title = document.createElement('span')
+        title.textContent = tickets.title
+
+        const room = document.createElement('span')
+        room.textContent = tickets.room
+
+        const category = document.createElement('span')
+        category.textContent = tickets.category
+
+        const done = document.createElement('span')
+        done.textContent = tickets.category
+        if (done === true) {
+            done = 'Выполнена'
+        }
+        else {
+            done = 'Открыта'
+        }
+
+        item.append(title, room, category, done)
+        append(item)
+    });
+}
+renderTickets()
