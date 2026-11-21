@@ -1,6 +1,6 @@
 const tickets = [
     {title: 'Проектор не включается ', room: '203 ', category: 'Оборудование ', done:  false},
-    {title: 'Проектор не включается ', room: '106 ', category: 'Аудитория ', done:  false},
+    {title: 'Окно в аудитории не открывается ', room: '106 ', category: 'Аудитория ', done:  false},
     {title: 'В коридоре не горит свет ', room: 'Коридор, 2-й этаж ', category: 'Другое ', done:  true},
 ]
 
@@ -18,7 +18,7 @@ ButtonPushHelp.addEventListener('click', () => {
     if (!nametitle || !roomnum) {
         return
     } 
-    const newticket = {title: `${nametitle} `, room: `${roomnum} `, category: `${categoryname}`, done: false}
+    const newticket = {title: `${nametitle} `, room: `${roomnum} `, category: `${categoryname} `, done: false}
     tickets.push(newticket)
     renderTickets()
 
@@ -41,15 +41,17 @@ function renderTickets() {
         category.textContent = tickets.category
 
         const done = document.createElement('span')
-        done.textContent = tickets.category
         if (done === true) {
-            done = "Выполнена"
+            tickets.done = 'Выполнена'
         }
         else if (done === false) {
-            done = "Открыта"
+            tickets.done = 'Открыта'
         }
+        done.textContent = tickets.done
 
+        TicketsList.append(item)
         item.append(title, room, category, done)
+        
     });
 }
-renderTickets()
+renderTickets();
