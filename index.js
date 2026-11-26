@@ -10,6 +10,8 @@ const TitleName = document.getElementById('TitleName')
 const RoomNumber = document.getElementById('RoomNumber')
 const CategoryName = document.getElementById('CategoryName')
 const ButtonPushHelp = document.querySelector('#ButtonPushHelp')
+const FreeTicketsCheck = document.getElementById('FreeTicketsCheck')
+
 
 ButtonPushHelp.addEventListener('click', () => {
     const nametitle = TitleName.value
@@ -24,6 +26,10 @@ ButtonPushHelp.addEventListener('click', () => {
 
     TitleName.value = ''
     RoomNumber.value = ''
+})
+
+FreeTicketsCheck.addEventListener("change", () => {
+    renderTickets()
 })
 
 function renderTickets() {
@@ -48,10 +54,15 @@ function renderTickets() {
         }
         const done = document.createElement('span')
         done.textContent = tickets.done
-
-        TicketsList.append(item)
         item.append(title, room, category, done)
-        
+
+        if (FreeTicketsCheck.checked) {
+            if (tickets.done == 'Открыта') {
+                TicketsList.append(item)
+            }  
+        } else {
+                TicketsList.append(item)
+        }
     });
 }
 renderTickets();
